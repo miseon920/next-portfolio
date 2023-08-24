@@ -1,6 +1,5 @@
 1. npx create-next-app@latest --typescript
     - npx create-next-app@latest 해도 기본으로 제공함(파일 이름을 .ts / .tsx로 변경)
-    - 
 
 2. npx next dev
 
@@ -19,7 +18,7 @@
 
     1. 기존의 index.tsx는 page.tsx로 변경
     2. app 폴더가 생김 - Next.js 13 버전은 기존 12 버전에서 사용한 파일 이름 라우팅 방식이 아니라 온전히 폴더 방식 라우팅을 사용한다. 
-        - 12 버전은 /pages/test.tsx 파일이 /test 라우팅이 되었다면 이번에 나온 13 버전부터는 /app/test/page.tsx로 해야 한다. (index.tsx가 page.tsx 가 된것, 컴포넌트도 따로 컴포넌트 폴더를 만들지 않고 해당 폴더안에 작성하여 바로 사용 할 수 있다.)
+        - 12 버전은 /pages/test.tsx 파일이 /test 라우팅이 되었다면 이번에 나온 13 버전부터는 ```/app/test/page.tsx```로 해야 한다. (index.tsx가 page.tsx 가 된것, 컴포넌트도 따로 컴포넌트 폴더를 만들지 않고 해당 폴더안에 작성하여 바로 사용 할 수 있다.)
         - 13버전 부터는 컴포넌트는 서버사이드 컴포넌트 이다.
         - 예전에는 getServerSideProps 함수를 통해서 서버에 요청 했다면 지금은 컴포넌트 내에서 바로 할 수 있다. Server Components를 사용
         - Streaming 특징: 서버단에서 컴포넌트를 랜더링 한 뒤 스트리밍 방식으로 클라이언트에 전달
@@ -61,4 +60,4 @@
         - next : revalidate 옵션이 있음 = ISR
             - fetch(url, {next: {revalidate: 10}});  => 10초마다 캐시를 갱신한다는 뜻
             
-+ todos folder는 13라우터를 위해 공부한것"# next-portfolio" 
++ todos folder는 13라우터를 위해 공부한것

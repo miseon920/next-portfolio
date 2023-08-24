@@ -1,4 +1,3 @@
-import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
@@ -6,7 +5,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Sunny portfolio',
-  description: 'nextjs로 만든 포트폴리오',
+  description: '서브내용',
 }
 
 export default function RootLayout({
@@ -20,3 +19,9 @@ export default function RootLayout({
     </html>
   )
 }
+
+
+/**
+ * 폰트 사용해 보기
+ * https://velog.io/@dusunax/next.js-google-font-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0feat.-tailwind
+ */
