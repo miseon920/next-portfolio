@@ -1,8 +1,14 @@
 import React from 'react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Sunny portfolio = 나',
+  description: 'aboutMe',
+}
 
 export default function  AboutMe() {
   return (
-    <div>page</div>
+    <div className='font-roboto title'>page</div>
   )
 }
 
@@ -32,6 +38,7 @@ export default function  AboutMe() {
  */
 
 /* tip
+
     1. useReducer hook : useState hook 보다는 유즈 리듀서를 이용하여 복잡성을 줄일 수 있다.
     2. boolean props에는 약어 사용 
     <RegistrationForm hasPadding={true} withError={true} /> (prop자체가 참인지 거짓인지 빠져 있다면 아래와 같이사용)

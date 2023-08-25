@@ -1,4 +1,10 @@
 import React from 'react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Sunny portfolio - 프로젝트',
+  description: 'Project',
+}
 
 export default function Projects() {
   return (

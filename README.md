@@ -18,7 +18,7 @@
 
     1. 기존의 index.tsx는 page.tsx로 변경
     2. app 폴더가 생김 - Next.js 13 버전은 기존 12 버전에서 사용한 파일 이름 라우팅 방식이 아니라 온전히 폴더 방식 라우팅을 사용한다. 
-        - 12 버전은 /pages/test.tsx 파일이 /test 라우팅이 되었다면 이번에 나온 13 버전부터는 ```/app/test/page.tsx```로 해야 한다. (index.tsx가 page.tsx 가 된것, 컴포넌트도 따로 컴포넌트 폴더를 만들지 않고 해당 폴더안에 작성하여 바로 사용 할 수 있다.)
+        - 12 버전은 /pages/test.tsx 파일이 /test 라우팅이 되었다면 이번에 나온 13 버전부터는 ```/app/test/page.tsx```로 해야 한다. (index.tsx가 page.tsx 가 된것, 컴포넌트도 따로 컴포넌트 폴더를 만들지 않고 해당 폴더안에 작성하여 바로 사용 할 수 있다.) - 폴더자체가 링크가 되므로 폴더는 링크주소로 쓰고 안에 컴포넌트는 규칙을 따라준다(첫단어 대문자)
         - 13버전 부터는 컴포넌트는 서버사이드 컴포넌트 이다.
         - 예전에는 getServerSideProps 함수를 통해서 서버에 요청 했다면 지금은 컴포넌트 내에서 바로 할 수 있다. Server Components를 사용
         - Streaming 특징: 서버단에서 컴포넌트를 랜더링 한 뒤 스트리밍 방식으로 클라이언트에 전달
@@ -26,14 +26,13 @@
     3. 서버컴포넌트 이므로 클라이언트 컴포넌트를 쓰려면 'use client' 디렉티브를 지정해야함 (ex = onclick, 보통 fetch등은 서버 컴포넌트 이용, ui 적인 부분은 클라이언트 컴포넌트를 사용함)
     4. Turbopack은 Server Components, TypeScript, JSX, CSS 등 많은 부분들을 바로 지원한다. (next dev --turbo)
     5. Google Font지원 - 브라우저에서 요청하지 않아도 됨 : ```import { Inter } from 'next/font/google'```
-    6. 공통 레이아웃을 원할경우 (그룹)을 만들고 그안에 넣으면 된다.(sub 부분!)
+    6. 공통 레이아웃을 원할경우 (그룹)을 만들고 그안에 ```layout.tsx```넣으면 된다.(sub 부분!)
 
 
 
 7. <https://vercel.com/templates/next.js/app-directory> 추가 공부
 
 8. if (조건문) return notFound(); => notFound 컴포넌트
-
 
 
 > 
