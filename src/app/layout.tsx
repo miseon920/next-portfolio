@@ -1,10 +1,11 @@
-'use client'
+// 'use client'
 
 import '@/assets/style/globals.css'
 import type { Metadata } from 'next'
 import { notoSansKr, roboto} from '@/assets/fonts/fonts' // 3번
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
+import { Providers } from '@/app/providers';
 
 export const metadata: Metadata = {
   title: 'Sunny portfolio',
@@ -20,16 +21,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="ko">
-      <body className={cls(notoSansKr.className, roboto.variable)}>
-        <Header/>
-        {children}
-        <Footer/>
-      </body>
-      {/* prop으로 들어온  children을 사용한것*/}
-    </html>
-  )
+    return (
+        <html lang="ko" suppressHydrationWarning>
+            <body className={`${cls(notoSansKr.className, roboto.variable)} bg-white dark:bg-black`}>
+                <Providers>
+                    <Header/>
+                    {children}
+                    <Footer/>
+                </Providers>
+            </body>
+        {/* prop으로 들어온  children을 사용한것*/}
+        </html>
+    )
 }
 
 

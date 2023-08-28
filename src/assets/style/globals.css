@@ -2,30 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/*다크모드 css*/
+
+/* :root {
+    --background: white;
+    --foreground: black;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+[data-theme='dark'] {
+    --background: black;
+    --foreground: white;
+} */
+/*다크모드 css end*/
+
+/* [data-theme='dark'] [data-hide-on-theme='dark'],
+[data-theme='light'] [data-hide-on-theme='light'] {
+display: none;
+} */
+.roboto-font {
+    font-family : var(--roboto);
+}
+/* [data-theme='light'] .dark-btn:hover{
+    color: yellow;
+}
+[data-theme='dark'] .dark-btn:hover{
+    color: orange !important;
+} */
+
+/* [data-theme='dark'] *:not(svg),
+[data-theme='dark'] *:not(button){
+ color:rgba(255,255,255,0.5);
+}
+
+[data-theme='dark'] header *:not(svg),
+[data-theme='dark'] footer *{
+    color:gray
+} */
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+    --dark: gray;
+    --darkBtnColor:yellow;
+    --darkColor:#333;
+}
+
+:root.dark {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-.title {
-    font-family : var(--roboto);
+    --dark: yellow;
+    --darkBtnColor:#e8675c;
+    --darkColor:#abb0ba;
 }

@@ -34,10 +34,57 @@
 
 8. if (조건문) return notFound(); => notFound 컴포넌트
 
-
-> 
-
 ♦️ 사용 : LottieFiles, Notion Api, TailwindCSS
+
+    1. LottieFiles 
+        - <https://lottiefiles.com> 로티파일 제이슨 파일로 다운받기
+        - npm install --save react-lottie-player <https://www.npmjs.com/package/react-lottie-player>
+        - Animation.tsx 생성 후 사용한 애니메이션 json 넣기
+
+        >
+        ```
+        import React from 'react'
+        import Lottie from 'react-lottie-player'
+        // Alternatively:
+        // import Lottie from 'react-lottie-player/dist/LottiePlayerLight'
+
+        import lottieJson from './my-lottie.json'
+
+        export default function Example() {
+        return (
+            <Lottie
+            loop
+            animationData={lottieJson}
+            play
+            style={{ width: 150, height: 150 }}
+            />
+        )
+        }
+        ```
+
+    2. TailwindCSS
+        - 기본적으로 nextjs 13버전에는 설치되어있다. (타입스크립트와 마찬가지로)
+        - <https://tailblocks.cc/> 에서 필요한 레이아웃을 골라서 코드 붙여넣기
+        - Tailwind CSS IntelliSense 익스텐션 설치
+
+
+    3. 다크모드(next tema git)
+        - npm install next-themes
+        - ```app/providers.tsx``` 에 ```import { ThemeProvider } from 'next-themes'```
+        - ```<ThemeProvider attribute="class"></ThemeProvider>``` 감싸기
+        - providers를 export하여 공통 레이아웃 body 아래 바로 감싸기
+        - css 및 버튼 추가
+        - <https://heroicons.com/> 에서 아이콘 추가 (copy svg)
+        - <https://velog.io/@devhyuk/Next-13-Next-js-Tailwind-%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C> next13 버전은 위의 블로그 참조하여 제작
+        - ```tailwind.config.ts```에 ```darkMode: "class",```를 추가해야 ```ThemeProvider attribute="class"``` 를 쓴게 먹는다.
+
+
+
+
+--------------------------------------------------------------------------------
+
+
+>
 
 * 크롤링 = 검색정보를 긁어서 저장한다(= 검색엔진)
 
