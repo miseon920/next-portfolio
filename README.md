@@ -83,7 +83,58 @@
 
 --------------------------------------------------------------------------------
 
+9. api - 노션api
+- ```/database``` 에서 데이터들을 입력하여 넣는다.
+- 커버변경 등 속성을 모두 추가한다. 
+- ```notion api doc```을 검색한다. <https://developers.notion.com/>
+- ```Get started``` -> 우측상단 ```
+View my integrations``` 클릭 <https://www.notion.so/my-integrations> 
+- 새 API 통합 만들기 클릭 후 작성 후 저장 후 시크릿키 복사 해 둔다.
+- ```.env.local``` 파일을 생성한다.
 
+>
+    ```
+    NOTION_TOKEN="아까복사한 시크릿키"
+    NOTION_DATABASE_ID="내 노션 데이터 베이스에서 전체페이지로 열기 후 ?v= 앞부분"
+    ```
+- <https://developers.notion.com/reference/retrieve-a-database> shell 코드 복사하여 사용하기
+
+- API 미리 확인하기 -> 포스트맨 검색
+    - import 클릭 후 shell코드 붙여넣고 send
+    - (```+```)를 눌러서 탭하나를 더 연후 curl에 있는 내주소 넣어주기
+    - authorization에서 Authorization: Bearer 값선택 후 값 넣어주기
+    - headers에 키 : Notion-Version  값: 2022-06-28 넣어주기
+    - ```https://api.notion.com/v1/databases/{database_id}``` 에 따라서 database_id 에 NOTION_DATABASE_ID 넣어주기 -> 제대로 나오면 성공!
+------------------------------------------------------------------------------------------------
+
+# Query a database
+- 포스트맨에 retrieve-a-database에서 사용한 api 복사 (버전과 Bearer값이 같아서)
+- 내주소를  ``` https://api.notion.com/v1/databases/{database_id}/query ``` 에서 database_id 에 NOTION_DATABASE_ID 넣어주기 -> POST로 세팅
+- headers에 키:Content-Type  값: application/json 세팅 (curl을 보고 필요한 키와 값을 세팅하면 된다.)
+- Accept : application/json 세팅
+- body에 raw 선택 후 sort 문 넣기
+
+> 
+
+    {
+        "sorts": [
+            {
+                "property": "title",
+                "direction": "descending" // ascending  = 내림차순 ,올림차순 의미
+            }
+        ]
+    }
+
+- nextjs에 데이터 가져오기 
+    - getStaticProps 에는 on-demand revalidation 으로 필요할 때 수동으로 revalidate 하는 방법
+    - <https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating> 
+    - (getStaticProps : 사이트가 빌드 될때 데이터를 가져오는 방식, 1번)
+    - (getServerSideProps : 내용이 바뀔때 마다 데이터를 가져오는 방식) <https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#upgrading-new-features>
+    - 노션 api Query a database에서 자바스크립트로 선택 후 복사
+    - dotenv 설치 (환경변수 사용하기 위해서) - <https://www.npmjs.com/package/dotenv>
+    - 루트 경로에 config 폴더 생성 후 index.ts 생성 후 데이터 베이스 아이디와 토큰 불러오기
+    - ```npm i @notionhq/client```설치하기 -  <https://www.npmjs.com/package/@notionhq/client>
+    - ```npm install @notionhq/client @notion-render/client @notion-render/hljs-plugin @notion-render/bookmark-plugin``` 설치
 >
 
 * 크롤링 = 검색정보를 긁어서 저장한다(= 검색엔진)
@@ -95,7 +146,7 @@
 * 따라서 csr(vue, react)보다는 ssr(nextjs, nuxtjs)를 사용한다. 
 
 + generateStaticParams
-    >  getStaticPaths -> generateStaticParams 변경됨
+    > getStaticPaths -> generateStaticParams 변경됨
     > 동적 라우팅에서 필요한 Params는 무조건 String 타입이므로 toString() 함수를 이용해서 String 타입으로 변환해  줘야한다.
 
 + fetch 
